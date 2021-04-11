@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react/jsx-filename-extension */
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Login from './modulos/login/Login';
+import Register from './modulos/register/Register';
+import User from './modulos/user/User';
 
 function App() {
+  const hasToken = () => {
+    const userToken = JSON.parse(localStorage.getItem('user'));
+    if (userToken) return true;
+    return false;
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/">
+        {hasToken() ? <Redirect to="/user" /> : <Login />}
+      </Route>
+      <Route exact path="/register" component={Register} />
+      <Route exact path="/user" component={User} />
+    </Switch>
   );
 }
 
