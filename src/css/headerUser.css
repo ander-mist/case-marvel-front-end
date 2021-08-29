@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Bebas';
+    src: url('./fonts/Bebas-Regular.ttf') format('opentype'),
+    url('./fonts/Bebas-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Bebas', 'Times New Roman';
+}
+
+.border-size {
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px gray;
+    box-shadow: 1px 1px 1px 1px rgb(209, 207, 207);
+}
+
+nav {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    font-weight: normal;
+    font-family: 'Bebas','Times New Roman';
+    height: 50%;
+    width: 30%;
+}
+
+nav p {
+    margin: 0 auto;
+    height: 20%;
+    color: red;
+}
+
+.header-button {
+    background-color: red;
+    border: solid 10px white;
+    border-radius: 18%;
+    color:white;
+    font-weight: 900;
+    height: 50%;
+    width: 100px;
+}

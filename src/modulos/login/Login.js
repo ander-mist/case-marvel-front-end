@@ -1,21 +1,29 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import api from '../../axios';
+import mainContext from '../../context/Context';
 
 function Login() {
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
   const [errorMessage, setErrorMessage] = useState('');
   const history = useHistory();
+  const { setUserInfo } = useContext(mainContext);
 
   const handleOnClick = async (event) => {
     event.preventDefault();
     const request = await api.post('/login', { email, password: pass })
       .then((response) => response.data).catch((err) => err.response.data);
     if (request.token) {
-      localStorage.setItem('user', JSON.stringify(request));
-      return history.push('/user');
+      localStorage.setItem('user', JSON.stringify({ token: request.token }));
+      setUserInfo({
+        id: request.id, name: request.name, email: request.email,
+      });
+      localStorage.setItem('currentUser', JSON.stringify({
+        id: request.id, name: request.name, email: request.email,
+      }));
+      return history.push(`/user/${request.id}`);
     }
     return setErrorMessage(request);
   };

@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin: 0 auto;
+  position: fixed;
+  z-index: 1;
+}
+
+.card {
+  border: rgb(216, 213, 213) solid 1px;
+  box-shadow: 1px 1px 2px 2px gray;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: space-between;
+  margin-bottom: 5%;
+  margin-right: 2%;
+  margin-left: 2%;
+  text-align: center;
+  width: 20%;
+}
+
+.card img {
+  height: 250px;
+  width: 100%;
+  border: rgb(216, 213, 213) solid 1px;
+  box-shadow: 1px 1px 2px 2px gray;
+}
+
+.title-card {
+  height: 50px;
+}
+
+.card button {
+  align-self: center;
+  border: rgb(216, 213, 213) solid 1px;
+  box-shadow: 1px 1px 2px 2px gray;
+  margin-top: 4%;
+  margin-bottom: 2%;
+  width: 50%;
+}
+
+.button-prev-next {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 25%;
+}
+
+.button-prev-next button {
+  border: solid 2px black;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px 2px rgb(43, 42, 42);
+  width: 40%;
+}
+
+.main-box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.text-description {
+  position: absolute;
+  background-color: black;
+  color: white;
+  height: 71%;
+  margin-top: 21%;
+  opacity: 0.6;
+  overflow: scroll;
+  z-index: 1;
+}
+
+.text-description p {
+  text-align: center;
+  width: inherit;
+}
+
+.title {
+  background-color: black;
+  border: rgb(216, 213, 213) solid 1px;
+  box-shadow: 1px 1px 2px 2px gray;
+  color: white;
+  margin-bottom: 2%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.text-description::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,21 @@
+.body-footer {
+  margin-top: 2%;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: black;
+  width: 100%;
+}
+
+.sec1 {
+  justify-self: center;
+}
+
+.sec2 {
+  justify-self: center;
+}
+
+.sec3 {
+  justify-self: center;
+}
+

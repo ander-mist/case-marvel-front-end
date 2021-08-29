@@ -1,8 +1,13 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import api from '../../axios';
+import mainContext from '../../context/Context';
 
+// eslint-disable-next-line object-curly-spacing
+// eslint-disable-next-line react/prop-types
 function Register() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -12,8 +17,10 @@ function Register() {
   const [nameInvalid, setNameInvalid] = useState('form-control');
   const [emailInvalid, setEmailInvalid] = useState('form-control');
   const [passInvalid, setPassInvalid] = useState('form-control');
+  const { setUserInfo } = useContext(mainContext);
   const history = useHistory();
-
+  // eslint-disable-next-line react/destructuring-assignment
+  // console.log(userName);
   const validate = (register) => {
     switch (true) {
       case !name:
@@ -37,8 +44,11 @@ function Register() {
       setErrorMessage(register);
       return setAlert('alert alert-danger');
     }
-    localStorage.setItem('user', JSON.stringify(register));
-    return history.push('/user');
+    localStorage.setItem('user', JSON.stringify({ token: register.token }));
+    setUserInfo({
+      id: register.id, name: register.name, email: register.email,
+    });
+    return history.push(`/user/${register.id}`);
   };
 
   useEffect(() => {
@@ -96,3 +106,9 @@ function Register() {
 }
 
 export default Register;
+
+Register.propTypes = {
+  userName: PropTypes.string.isRequired,
+  userEmail: PropTypes.string.isRequired,
+  userPass: PropTypes.string.isRequired,
+};
